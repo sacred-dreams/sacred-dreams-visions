@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SacredDreamsAndVisions</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <script src="countries.js"></script>
+    <script src="createfamily.js"></script> 
+    <script src="biblicalDreams.js"></script> 
+    <script src="functions.js"></script> 
+ </head>
+<body>
+    <header>
+
+        <div class="button-bar">
+                
+                <div class="button">
+                    <img id="logo" src="holycross.png" alt="Logo">
+                    Home & Contact
+                    <div class="dropdown-content">
+                        <a href="#" onclick="resetPage()">Home</a>
+                        <a href="#" onclick="toggleContactForm()">Contact us</a>
+                        <a href="#" class="dropdown-item">9360000000</a>
+                    </div>
+                </div>
+       
+                <div class="button">
+                    <img id="logo" src="holycross.png" alt="Logo">
+                    Sacred Dreams Of AdorersCenacle 
+                    <div class="dropdown-content">
+                        <a href="#" onclick="dream1998()">August 1998</a>
+                        <a href="#" onclick="dreamJuly2000()">July 9, 2000</a>
+                        <a href="#" onclick="dreamDecember2000()">December 11, 2000</a>
+                        <a href="#" onclick="dreamNovember2010()">November 9, 2010</a>
+                        <a href="#" onclick="dreamMay2011()">May 14, 2011</a>
+                        <a href="#" onclick="dreamJuly2019()">July 28, 2019</a>
+                        <a href="#" onclick="dreamNovember2022()">November 2022</a>
+                        <a href="#" onclick="dreamSacredSongs()">Sacred Songs</a>
+                    </div>
+                </div>
+                 
+               <div class ="button">
+               <img id="logo" src="hcross.jpg" alt="Logo">
+               </div>
+
+                <div class="button">
+                <img id="logo" src="holycross.png" alt="Logo">
+                SacredDreams & DreamAnalytics 
+                <div class="dropdown-content">
+                    <a href="#" onclick="shareSacredDream()">Share Your Sacred Dream</a>
+                    <a href="#" onclick="BiblicalDreams()">Biblical Dreams & Visions</a>
+                    <a href="#" onclick="viewSharedDreams()">View Shared Sacred Dreams</a>
+                    <a href="#" onclick="commonMessages()">Identical Dreams & Visions</a>
+                    <a href="#" onclick="dreamsByRegion()">Regional Sacred Dreams</a>
+                    <a href="#" onclick="predictEvents()">Predictions From Sacred Dreams</a>
+                </div>
+            </div>
+
+                <div class="button">
+                    <img id="logo" src="hfamily.jpg" alt="Logo">
+                    MyFamily & SacredDreams
+                    <div class="dropdown-content">
+                        <a href="#" onclick="createFamily()">Create a family</a>
+                        <a href="#" onclick="marriageForm()">Marriage & SacredDreams</a>
+                        <a href="#" onclick="prayerForm()">Family Devotion Prayer</a>
+                        <a href="#" onclick="adorersCenacleForm()">About AdorersCenacle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <marquee behavior="scroll" direction="left">Sacred-Visions!     Acts 2:17 NKJV ‘And it shall come to pass in the last days, says God, That I will pour out of My Spirit on all flesh; Your sons and your daughters shall prophesy, Your young men shall see visions, Your old men shall dream dreams.' </marquee>
+        
+    </header>
+     
+    <section>
+         
+            <!-- Move forms here and set their initial display to none -->
+            <div class="form" id="contactForm" style="display: none;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdkTU1hyBoyHZErjPzb_aO5g9wgrhhiz61QPEnL-SC2nw2qew/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+
+            <div class="form" id="sharedreamForm" style="display: none;">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScG-SNMMPBrzwzrWE2IfHOrDJ4q0cU0iML38M4fydoMvadAqA/viewform?embedded=true" width="100%" height="1200" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+
+            <div class="form" id="dreamContent" style="display: none; text-align: center;">
+                <!-- This is where the dream content will be displayed -->
+            </div>
+
+            <form id="resultForm" style="text-align: left;"></form>
+          </section>
+    
+    <footer class="footer">
+    <div class="media-buttons">
+        <p>Sacred Dreams And Visions</p>
+        <input type="text" placeholder="Search...">
+        <button>Search</button>
+        <button onclick="resetPage()">Home</button>
+    </div>
+</footer>
+
+     <script> 
+let currentlyReading = false;
+let currentUtterance = null;
+let progressBar = null;
+let progressInterval = null;
+
+function speakText(form) {
+  if (currentlyReading) {
+    // Stop the current reading if it's already in progress
+    window.speechSynthesis.cancel();
+    currentlyReading = false;
+    clearInterval(progressInterval); // Clear progress interval
+  }
+
+  let text = '';
+
+  // Iterate over all elements in the form and concatenate their text content
+  form.querySelectorAll('h1, h2, h3, p').forEach(element => {
+    text += element.textContent + '\n';
+  });
+
+  const utterance = new SpeechSynthesisUtterance();
+  utterance.text = text;
+  currentlyReading = true;
+  currentUtterance = utterance;
+
+  utterance.onstart = function () {
+    // Start progress bar update interval
+    progressInterval = setInterval(updateProgressBar, 100);
+  };
+
+  utterance.onend = function () {
+    currentlyReading = false;
+    clearInterval(progressInterval); // Clear progress interval
+    if (progressBar) {
+      progressBar.style.width = '100%'; // Ensure progress bar reaches 100% on completion
+    }
+  };
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function updateProgressBar() {
+  if (currentUtterance) {
+    const progress = (window.speechSynthesis.speaking ? (window.speechSynthesis.elapsedTime / currentUtterance.duration) * 100 : 0);
+    if (progressBar) {
+      progressBar.style.width = progress + '%';
+    }
+  }
+}
+
+function addListenButton(form) {
+  const listenButton = document.createElement('button');
+  listenButton.textContent = 'Play';
+  listenButton.addEventListener('click', function () {
+    speakText(form);
+  });
+  form.insertBefore(listenButton, form.firstChild);
+
+  const pauseButton = document.createElement('button');
+  pauseButton.textContent = 'Pause';
+  pauseButton.addEventListener('click', function () {
+    if (currentUtterance) {
+      window.speechSynthesis.pause();
+      currentlyReading = false;
+    }
+  });
+  form.insertBefore(pauseButton, form.firstChild);
+
+  const unpauseButton = document.createElement('button');
+  unpauseButton.textContent = 'Resume';
+  unpauseButton.addEventListener('click', function () {
+    if (currentUtterance) {
+      window.speechSynthesis.resume();
+      currentlyReading = true;
+    }
+  });
+  form.insertBefore(unpauseButton, form.firstChild);
+
+  const cancelButton = document.createElement('button');
+  cancelButton.textContent = 'Close';
+  cancelButton.addEventListener('click', function () {
+    window.speechSynthesis.cancel();
+    currentlyReading = false;
+    form.remove();
+  });
+  form.insertBefore(cancelButton, form.firstChild);
+
+  // Create progress bar
+  progressBar = document.createElement('div');
+  progressBar.className = 'progress-bar';
+  progressBar.style.width = '0%';
+  form.insertBefore(progressBar, form.firstChild);
+}
+
+     </script>
+    
+
+  </body>
+</html>

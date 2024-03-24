@@ -1,0 +1,237 @@
+
+        /* Global styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            min-height: 500;
+        }
+
+       /* Media query for smaller screens */
+        @media screen and (max-width: 600px) {
+            .button-bar {
+                flex-direction: column; /* Change direction to column */
+                align-items: center; /* Center align buttons */
+            }
+            .button {
+                margin: 5px 0; /* Adjust margin for vertical spacing */
+            }
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* Header styles */
+        header {
+            background-color: green;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        .button-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly; /* Add space between buttons */
+            margin-bottom: 2px; /* Reduce spacing between button bar and logo */
+       }
+
+.button {
+    position: relative;
+    display: inline-flex; /* Change display to inline-flex */
+    flex-direction: column; /* Set flex-direction to column */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding: 5px 10px; /* Adjusted padding */
+    background-color: blue;
+    color: yellow;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 15px;
+    margin-bottom: 1px; /* Add margin between rows */
+}
+
+    #contactForm,
+    #familyForm,
+    #sharedreamForm,
+    #resultForm,
+    #aboutAdorersCenacleForm {
+    display: none;
+}
+
+form {
+  width: 90%;
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 12px;
+  border: 1px solid black; /* Fix border-style syntax */
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-left: 20px;
+  margin-bottom: 80px;
+  margin-top: 1%;
+}
+  
+input[type="text"], input[type="number"] {
+  width: 100%;
+  height: 30px;
+}
+ 
+
+/* Style for the familyForm */
+form[name="familyForm"] {
+   width: 50%;
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 12px;
+  border: 1px solid black; /* Fix border-style syntax */
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-left: 20px;
+  margin-bottom: 80px;
+  margin-top: 1%;
+}
+
+
+#resultForm {
+  width: 95%;
+  padding: 10px; /* Adjust padding as needed */
+  border-radius: 12px;
+  border: 1px solid black; /* Fix border-style syntax */
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 80px;
+  margin-top: 1%;
+  margin-left: 1%; /* Adjust the left margin as needed */
+}
+
+#logo {
+    max-width: 60px; /* Set your preferred max-width */
+    height: 60px; /* Set the height to match the width for a circular shape */
+    border-radius: 50%; /* Make it circular */
+    margin-right: 7px; /* Add some margin for spacing */
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: max-content; /* Set min-width to max-content */
+    z-index: 1;
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+    padding: 10px; /* Add padding to the dropdown */
+    top: 100%; /* Position the dropdown below the button */
+    left: 0; /* Align the dropdown with the left edge of the button */
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px; /* Adjust padding */
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s; /* Add transition for smoother hover effect */
+}
+
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-content a:hover {
+    background-color: seagreen;
+}
+
+
+.button:hover .dropdown-content {
+    display: block;
+}
+        
+ 
+marquee {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: monospace;
+  }
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 6px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    }
+
+/* Style for the buttons */
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px; /* Add margin as needed */
+}
+
+.button-container button {
+    margin-left: 10px; /* Add margin between buttons as needed */
+    padding: 8px 15px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container button:first-child {
+    margin-left: 0; /* No margin for the first button */
+}
+
+
+/* Styles for media buttons */
+.media-buttons {
+    text-align: center;
+    margin-top: 0%;
+    margin-left: 0%;
+}
+
+.media-buttons button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    margin-top: 0%;
+    background-color: rgba(25, 2, 255, 0.8);
+}
+
+.media-buttons input[type="text"] {
+    width: 150px; /* Adjust width as needed */
+    padding: 8px;
+    border-radius: 15px;
+    border: none;
+    margin-right: 5px; /* Add space between search bar and search button */
+}
+
+.progress-bar {
+  height: 5px;
+  background-color: blue;
+  margin-bottom: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-right: 10px;
+  animation-play-state: running;
+}
+
+
+
